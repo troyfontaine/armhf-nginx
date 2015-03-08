@@ -7,7 +7,7 @@ Dockerfile for setting up an Nginx container on ARMHF (compatible with Raspberry
 ## Installation
 1. Install Docker
 2. Download <a href="https://registry.hub.docker.com/u/troyfontaine/armhf-nginx/">the pre-built image</a> from the <a href="https://registry.hub.docker.com/">Docker Hub Registry</a>: `docker pull troyfontaine/armhf-nginx`
-(alternatively, you can build an image from Dockerfile: `docker build -t="troyfontaine/armhf-nginx" github.com/troyfontaine/armhf-nginx)`
+(alternatively, you can build an image from Dockerfile: `docker build -t="troyfontaine/armhf-nginx" github.com/troyfontaine/armhf-nginx`)
 
 ## Usage
 
