@@ -3,7 +3,7 @@
 # Based on armv7/armhf-ubuntu
 ############################################################
 
-FROM armv7/armhf-ubuntu
+FROM armv7/armhf-ubuntu:14.04.2
 
 MAINTAINER Troy Fontaine
 
