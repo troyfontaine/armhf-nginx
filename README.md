@@ -2,7 +2,7 @@
 Dockerfile for setting up an Nginx container on ARMHF (compatible with Raspberry Pi 2 Model B)
 
 ## Base Docker Image
-<a href="https://registry.hub.docker.com/u/armv7/armhf-ubuntu/">armv7/armhf-ubuntu</a>
+<a href="https://registry.hub.docker.com/u/troyfontaine/armhf-alpinelinux/">troyfontaine/armhf-alpinelinux</a>
 
 ## Installation
 1. Install Docker
