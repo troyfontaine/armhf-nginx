@@ -1,26 +1,27 @@
 ############################################################
 # Dockerfile to build ARMhf Nginx Installed Containers
-# Based on armv7/armhf-ubuntu
+# Based on troyfontaine/armhf-alpinelinux
 ############################################################
 
-FROM armv7/armhf-ubuntu:14.04.2
+FROM troyfontaine/armhf-alpinelinux:3.3
 
 MAINTAINER Troy Fontaine
 
 # Update the repository and install tools
 RUN \ 
-  apt-get update && apt-get -y install nginx && \
-  rm -rf /var/lib/apt/lists/* && \
-  echo "\ndaemon off;" >> /etc/nginx/nginx.conf \
-  && sed -i 's/^http {/&\n    server_names_hash_bucket_size 128;/g' /etc/nginx/nginx.conf \
-  && sed -i 's/^http {/&\n    server_tokens off;/g' /etc/nginx/nginx.conf && \
-  chown -R www-data:www-data /var/lib/nginx
+  apk --update add nginx && \
+  mkdir /etc/nginx/sites-enabled && \
+  mkdir /etc/nginx/certs && \
+  chown -R nginx:nginx /var/www/localhost/htdocs
+
+ADD nginx.conf /etc/nginx/nginx.conf
+ADD default.conf /etc/nginx/sites-enabled/default.conf
 
 # Define mountable directories
-VOLUME ["/etc/nginx/sites-enabled", "/etc/nginx/certs", "/etc/nginx/conf.d", "/var/log/nginx", "/var/www/html"]
+VOLUME ["/etc/nginx/sites-enabled", "/etc/nginx/certs", "/etc/nginx/conf.d", "/var/www/localhost/htdocs"]
 
 # Set the default command to execute when creating a new container
-CMD ["nginx"]
+CMD ["nginx","-g","daemon off;"]
 
 # Expose Ports
 EXPOSE 80 443
