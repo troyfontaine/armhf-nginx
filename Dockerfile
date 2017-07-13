@@ -3,15 +3,16 @@
 # Based on troyfontaine/armhf-alpinelinux
 ############################################################
 
-FROM troyfontaine/armhf-alpinelinux:3.3
+FROM troyfontaine/armhf-alpinelinux:3.5
 
 MAINTAINER Troy Fontaine
 
 # Update the repository and install tools
-RUN \ 
+RUN \
   apk --update add nginx && \
   mkdir /etc/nginx/sites-enabled && \
   mkdir /etc/nginx/certs && \
+  mkdir -p /run/nginx && \
   chown -R nginx:nginx /var/www/localhost/htdocs
 
 ADD nginx.conf /etc/nginx/nginx.conf
